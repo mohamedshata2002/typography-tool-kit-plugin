@@ -1,6 +1,7 @@
 from langchain_google_genai import GoogleGenerativeAI
 from api_key import GOOGLE_API_KEY
 import os 
+from langchain.document_loaders import CSVLoader
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -11,14 +12,17 @@ from langchain.output_parsers import ResponseSchema ,StructuredOutputParser
 
 os.environ["google_api_key"] =GOOGLE_API_KEY
 fonts =pd.read_csv("fonts.csv")
-model=GoogleGenerativeAI(model="gemini-1.0-pro",google_api_key=GOOGLE_API_KEY,temperature=0)
+fonts = fonts.sample(frac=1).reset_index(drop=True)
+model=GoogleGenerativeAI(model="gemini-1.0-pro",temperature=0)
 
 def Parser():
-    font= ResponseSchema(name="font",description="The name of the font style")
+    font_family  = ResponseSchema(name="font_family",description="The family of the font")
+    font_Style= ResponseSchema(name="Style",description="The style of the font")
     reason= ResponseSchema(name="reason",description="why you use it")
 
-    output_parser = StructuredOutputParser(response_schemas=[font,reason])
+    output_parser = StructuredOutputParser(response_schemas=[font_family,font_Style,reason])
     return output_parser
+
 
 output_parser = Parser()
 def Font_creator(query):
