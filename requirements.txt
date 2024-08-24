@@ -1,0 +1,6 @@
+uvicorn
+fastapi
+langchain
+langchain_core
+langchain_google_genai
+pandas
