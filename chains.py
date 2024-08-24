@@ -1,7 +1,6 @@
 from langchain_google_genai import GoogleGenerativeAI
 from api_key import GOOGLE_API_KEY
 import os 
-from langchain.document_loaders import CSVLoader
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
