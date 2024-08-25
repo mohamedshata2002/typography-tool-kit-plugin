@@ -13,7 +13,7 @@ from langchain.output_parsers import ResponseSchema ,StructuredOutputParser
 os.environ["google_api_key"] =GOOGLE_API_KEY
 fonts =pd.read_csv("fonts.csv")
 fonts = fonts.sample(frac=1).reset_index(drop=True)
-model=GoogleGenerativeAI(model="gemini-1.0-pro",temperature=0)
+model=GoogleGenerativeAI(model="gemini-1.0-pro",google_api_key=GOOGLE_API_KEY,temperature=0)
 
 def Parser():
     font_family  = ResponseSchema(name="font_family",description="The family of the font")
