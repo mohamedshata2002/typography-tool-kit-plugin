@@ -21,7 +21,7 @@ def Brain(query,num):
     secandry_dict = {}
     for font in sugested_fonts_fonts_sp:
         secandry_dict = {}
-        main_pairer = font["font"]
+        main_pairer = font['font_family']
         result_p = Font_pairer(main_pairer, num)
         split_p = splitter(result_p, output_parser)
         secandry_dict["main_font"] = font
