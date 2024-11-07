@@ -1,2 +1,5 @@
-GOOGLE_API_KEY="AIzaSyBUC8Xc9NSPk_WxTpbJ_A3kvHpYr2-QP9E"
-Misteral_api ="ar5i53soIjzpQGZp3pywNaKxWJHE1bjs"
+from dotenv import load_dotenv
+import os 
+
+load_dotenv()
+GOOGLE_API_KEY= os.getenv("GOOGLE_API_KEY")
